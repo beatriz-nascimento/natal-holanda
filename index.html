@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Natal na Holanda 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a wall of Delft-style day tiles up top (overview), then one folding card per day (detail). */
+:root {
+  --paper: #f3f6fc;
+  --surface: #ffffff;
+  --ink: #16203a;
+  --muted: #586482;
+  --line: #d9e0ee;
+  --delft: #1f45a0;
+  --delft-soft: #e5ebf9;
+  --gold: #9a6a08;
+  --gold-soft: #fbf0d6;
+  --holly: #a3302a;
+  --holly-soft: #f9e4e2;
+  --pine: #2b6a4c;
+  --pine-soft: #e1f0e8;
+  --shadow: 0 1px 2px rgb(22 32 58 / .06), 0 6px 20px rgb(22 32 58 / .06);
+
+  --f-display: "Young Serif", Georgia, "Times New Roman", serif;
+  --f-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1222; --surface: #161d33; --ink: #e8ecf6; --muted: #9aa5c2; --line: #29324d;
+    --delft: #93b1ff; --delft-soft: #1c2950; --gold: #f0c35e; --gold-soft: #3a2f14;
+    --holly: #ff8f86; --holly-soft: #3d1c1c; --pine: #7fd1a6; --pine-soft: #15322a;
+    --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 8px 24px rgb(0 0 0 / .25);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0d1222; --surface: #161d33; --ink: #e8ecf6; --muted: #9aa5c2; --line: #29324d;
+  --delft: #93b1ff; --delft-soft: #1c2950; --gold: #f0c35e; --gold-soft: #3a2f14;
+  --holly: #ff8f86; --holly-soft: #3d1c1c; --pine: #7fd1a6; --pine-soft: #15322a;
+  --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 8px 24px rgb(0 0 0 / .25);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+}
+.wrap { max-width: 1060px; margin: 0 auto; }
+a { color: var(--delft); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--delft); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; margin: 0; line-height: 1.15; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- header ---------- */
+header.top { padding-block: 40px 28px; display: grid; gap: 18px; }
+header.top h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); letter-spacing: -.01em; }
+header.top h1 span { color: var(--delft); }
+.lede { max-width: 62ch; color: var(--muted); font-size: 1.05rem; margin: 0; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 24px; font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+/* ---------- section titles ---------- */
+section { padding-block: 28px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin-bottom: 16px; }
+.sec-head h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); }
+
+/* ---------- filters ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.chip {
+  font: 500 14px/1 var(--f-body); color: var(--ink);
+  border: 1px solid var(--line); background: var(--surface);
+  padding: 9px 14px; border-radius: 999px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex: none; background: currentColor; }
+.t-pt { --c: var(--delft); --cs: var(--delft-soft); }
+.t-natal { --c: var(--gold); --cs: var(--gold-soft); }
+.t-reserva { --c: var(--holly); --cs: var(--holly-soft); }
+.t-familia { --c: var(--pine); --cs: var(--pine-soft); }
+.t-compras { --c: var(--muted); --cs: var(--line); }
+.chip .dot { background: var(--c, currentColor); }
+
+/* ---------- tile wall (overview) ---------- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.tile {
+  position: relative; text-align: left; cursor: pointer;
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 6px;
+  padding: 14px 14px 12px; display: grid; gap: 4px; align-content: start;
+  min-height: 150px; font: inherit;
+  transition: transform .15s ease, border-color .15s ease, opacity .2s ease;
+}
+/* Delft tile corners */
+.tile::before, .tile::after {
+  content: ""; position: absolute; width: 18px; height: 18px; pointer-events: none;
+  border: 2px solid var(--delft); opacity: .35;
+}
+.tile::before { top: 6px; right: 6px; border-left: 0; border-bottom: 0; border-radius: 0 8px 0 0; }
+.tile::after { bottom: 6px; left: 6px; border-right: 0; border-top: 0; border-radius: 0 0 0 8px; }
+.tile:hover { transform: translateY(-2px); border-color: var(--delft); }
+.tile .wd { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.tile .num { font-family: var(--f-display); font-size: 2.6rem; line-height: 1; color: var(--delft); font-variant-numeric: tabular-nums; }
+.tile .num small { font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin-left: 4px; }
+.tile .tt { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.tile .city { font-size: 12.5px; color: var(--muted); line-height: 1.3; }
+.tile .dots { display: flex; gap: 5px; margin-top: 6px; }
+.tile .dots .dot { background: var(--c); }
+.tile.is-xmas { background: linear-gradient(var(--gold-soft), var(--surface) 70%); }
+.dim { opacity: .28; }
+
+/* ---------- day cards ---------- */
+.tools { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  font: 500 14px/1 var(--f-body); color: var(--delft); background: transparent;
+  border: 1px solid var(--line); border-radius: 6px; padding: 9px 12px; cursor: pointer;
+}
+.btn:hover { border-color: var(--delft); }
+.days { display: grid; gap: 12px; }
+details.day {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  scroll-margin-top: 16px; transition: opacity .2s ease;
+}
+details.day[open] { box-shadow: var(--shadow); }
+details.day > summary {
+  list-style: none; cursor: pointer; padding: 16px 18px;
+  display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 16px; align-items: center;
+}
+details.day > summary::-webkit-details-marker { display: none; }
+.dateblock { text-align: center; border-right: 1px solid var(--line); padding-right: 14px; }
+.dateblock .n { font-family: var(--f-display); font-size: 2.1rem; line-height: 1; color: var(--delft); font-variant-numeric: tabular-nums; }
+.dateblock .w { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.sumtext { min-width: 0; display: grid; gap: 3px; }
+.sumtext h3 { font-size: 1.3rem; }
+.sumtext .city { font-size: 13.5px; color: var(--muted); }
+.sumtext .res { font-size: 14.5px; color: var(--muted); max-width: 70ch; }
+details.day[open] .sumtext .res { color: var(--ink); }
+.chev { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--muted); transition: transform .2s ease; }
+details.day[open] .chev { transform: rotate(180deg); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font: 500 11.5px/1 var(--f-body); letter-spacing: .02em;
+  color: var(--c); background: var(--cs); padding: 5px 8px; border-radius: 4px;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+}
+
+.daybody { padding: 0 18px 20px; display: grid; gap: 18px; }
+.cover {
+  position: relative; border-radius: 8px; overflow: hidden; background: var(--delft-soft);
+  aspect-ratio: 21 / 8; max-width: 100%; max-height: 300px; width: 100%;
+}
+.cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cover .fallback {
+  position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 16px;
+  background:
+    radial-gradient(circle at 0 0, transparent 22px, var(--delft) 23px 25px, transparent 26px) 0 0 / 56px 56px,
+    radial-gradient(circle at 100% 100%, transparent 22px, var(--delft) 23px 25px, transparent 26px) 0 0 / 56px 56px,
+    var(--delft-soft);
+}
+.cover .fallback span {
+  font-family: var(--f-display); font-size: clamp(1.4rem, 4vw, 2.2rem); color: var(--delft);
+  background: var(--surface); padding: 8px 18px; border-radius: 6px;
+}
+.cover figcaption {
+  position: absolute; right: 8px; bottom: 6px; font: 11px var(--f-mono);
+  color: #fff; background: rgb(0 0 0 / .45); padding: 2px 6px; border-radius: 3px;
+}
+.move { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--muted); }
+.move svg { flex: none; margin-top: 2px; color: var(--delft); }
+
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.timeline li { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 16px; padding-block: 12px; border-top: 1px solid var(--line); }
+.timeline li:first-child { border-top: 0; }
+.timeline .h { font-family: var(--f-mono); font-size: 13.5px; color: var(--delft); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.timeline .b { min-width: 0; display: grid; gap: 4px; }
+.timeline .b strong { font-weight: 600; }
+.timeline .b p { margin: 0; color: var(--muted); font-size: 15px; max-width: 72ch; }
+.timeline .b .tags { margin-top: 2px; }
+.timeline .b a { font-size: 14px; font-weight: 500; }
+.timeline li.dim { opacity: .35; }
+
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.note { border-radius: 8px; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); }
+.note.warn { background: var(--gold-soft); border-color: transparent; }
+.note.food { background: var(--pine-soft); border-color: transparent; }
+.note.food h4 { color: var(--pine); }
+.note strong { font-weight: 600; }
+.note h4 { margin: 0 0 6px; font: 600 12px/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.note.warn h4 { color: var(--gold); }
+.note ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14.5px; }
+
+/* ---------- flights ---------- */
+.flights { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.leg { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 12px; }
+.leg h3 { font-size: 1.15rem; }
+.seg { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; padding-top: 10px; border-top: 1px dashed var(--line); }
+.seg .code { font-family: var(--f-mono); font-weight: 500; color: var(--delft); }
+.seg .code small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+.seg .route { font-family: var(--f-mono); font-size: 14px; font-variant-numeric: tabular-nums; }
+.seg p { margin: 2px 0 0; font-size: 13.5px; color: var(--muted); }
+
+/* ---------- checklist ---------- */
+.checklist { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.checklist li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 12px 16px; border-top: 1px solid var(--line); }
+.checklist li:first-child { border-top: 0; }
+.checklist input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--delft); }
+.checklist label { cursor: pointer; display: grid; gap: 2px; }
+.checklist .when { font-size: 13px; color: var(--muted); }
+.checklist li.done label > span:first-child { text-decoration: line-through; color: var(--muted); }
+.checklist .go { font-size: 13px; font-family: var(--f-mono); white-space: nowrap; }
+.progress { font-family: var(--f-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ---------- info grids ---------- */
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.info { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
+.info h3 { font-size: 1.05rem; font-family: var(--f-body); font-weight: 600; }
+.info p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.info .meta { font-family: var(--f-mono); font-size: 12px; }
+.info.pt { border-color: var(--delft); }
+
+footer { padding-block: 32px 0; border-top: 1px solid var(--line); margin-top: 24px; display: grid; gap: 12px; font-size: 14px; color: var(--muted); }
+footer ul { margin: 0; padding-left: 18px; columns: 2 260px; column-gap: 32px; }
+footer li { margin-bottom: 4px; break-inside: avoid; }
+
+@media (max-width: 560px) {
+  details.day > summary { grid-template-columns: 52px minmax(0, 1fr) auto; gap: 12px; padding: 14px; }
+  .dateblock { padding-right: 10px; }
+  .dateblock .n { font-size: 1.7rem; }
+  .sumtext .res { display: none; }
+  details.day[open] .sumtext .res { display: block; }
+  .daybody { padding: 0 14px 16px; }
+  .timeline li { grid-template-columns: 56px minmax(0, 1fr); gap: 10px; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile { min-height: 132px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow" id="eyebrow">Voorburg · 16 a 27 de dezembro de 2026</div>
+    <h1 id="titulo">Natal na <span>Holanda</span></h1>
+    <p class="lede" id="lede"></p>
+    <div class="facts" id="facts"></div>
+  </header>
+
+  <section id="visao-geral" aria-labelledby="h-geral">
+    <div class="sec-head">
+      <h2 id="h-geral">Visão geral</h2>
+      <span class="eyebrow">toque em um dia para ver o detalhe</span>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Destacar dias"></div>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section id="dias" aria-labelledby="h-dias">
+    <div class="sec-head">
+      <h2 id="h-dias">Dia a dia</h2>
+      <div class="tools">
+        <button class="btn" type="button" id="abrir-todos">Abrir todos</button>
+        <button class="btn" type="button" id="fechar-todos">Fechar todos</button>
+      </div>
+    </div>
+    <div class="days" id="days"></div>
+  </section>
+
+  <section id="reservas" aria-labelledby="h-res">
+    <div class="sec-head">
+      <h2 id="h-res">Reservar antes</h2>
+      <span class="progress" id="progress"></span>
+    </div>
+    <ul class="checklist" id="checklist"></ul>
+  </section>
+
+  <section id="portugues" aria-labelledby="h-pt">
+    <div class="sec-head"><h2 id="h-pt">Em português</h2><span class="eyebrow">guias e áudios no nosso idioma</span></div>
+    <div class="grid2" id="pt"></div>
+  </section>
+
+  <section id="voos" aria-labelledby="h-voos">
+    <div class="sec-head"><h2 id="h-voos">Voos</h2><span class="eyebrow">TAP · via Lisboa</span></div>
+    <div class="flights" id="flights"></div>
+  </section>
+
+  <section id="praticas" aria-labelledby="h-prat">
+    <div class="sec-head"><h2 id="h-prat">Para saber antes</h2></div>
+    <div class="grid2" id="praticas-list"></div>
+  </section>
+
+  <section id="extras" aria-labelledby="h-ext">
+    <div class="sec-head"><h2 id="h-ext">Se sobrar tempo</h2></div>
+    <div class="grid2" id="extras-list"></div>
+  </section>
+
+  <footer>
+    <div class="eyebrow">Fontes consultadas em 23/10/2026 — horários de dezembro podem mudar</div>
+    <ul id="fontes"></ul>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
