@@ -193,21 +193,23 @@
 
   function checklist() {
     let done = new Set(loadDone());
+    D.reservas.forEach((r) => { if (r.feito) done.add(r.id); });
     const list = $("checklist");
     const update = () => { $("progress").textContent = `${done.size} de ${D.reservas.length} feitos`; };
     D.reservas.forEach((r) => {
       const day = D.dias.find((d) => d.id === r.dia);
       const id = "chk-" + r.id;
       const li = h("li" + (done.has(r.id) ? ".done" : ""));
-      const cb = h("input", { type: "checkbox", id, checked: done.has(r.id) });
+      const cb = h("input", { type: "checkbox", id, checked: done.has(r.id), disabled: !!r.feito });
       cb.addEventListener("change", () => {
         cb.checked ? done.add(r.id) : done.delete(r.id);
         li.classList.toggle("done", cb.checked);
         saveDone([...done]); update();
       });
+      const when = (day ? parseDate(day.data).getDate() + "/12 · " : "") + (r.feito ? "já comprado" : "quando: " + r.quando);
       li.append(
         cb,
-        h("label", { for: id }, h("span", null, r.item), h("span.when", null, (day ? parseDate(day.data).getDate() + "/12 · " : "") + "quando: " + r.quando)),
+        h("label", { for: id }, h("span", null, r.item), h("span.when" + (r.feito ? ".ok" : ""), null, when)),
         r.url ? h("a.go", { href: r.url, target: "_blank", rel: "noopener" }, "abrir ↗") : h("span")
       );
       list.append(li);

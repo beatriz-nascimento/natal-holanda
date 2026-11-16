@@ -220,6 +220,8 @@ details.day[open] .chev { transform: rotate(180deg); }
 .checklist input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--delft); }
 .checklist label { cursor: pointer; display: grid; gap: 2px; }
 .checklist .when { font-size: 13px; color: var(--muted); }
+.checklist .when.ok { color: var(--pine); font-weight: 600; }
+.checklist input:disabled { opacity: 1; cursor: default; }
 .checklist li.done label > span:first-child { text-decoration: line-through; color: var(--muted); }
 .checklist .go { font-size: 13px; font-family: var(--f-mono); white-space: nowrap; }
 .progress { font-family: var(--f-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }

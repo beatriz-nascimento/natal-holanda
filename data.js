@@ -9,6 +9,8 @@
  *   compras  -> compras
  *   familia  -> tempo em família / descanso
  *
+ * reservas: { id, item, quando, url, dia, feito } — feito: true marca como já comprado.
+ *
  * comer: lista { nome, tipo, onde } com sugestões de onde comer no dia.
  *
  * imagens: lista de nomes de arquivo do Wikimedia Commons (testados em ordem;
@@ -20,7 +22,7 @@ window.ITINERARIO = {
     subtitulo: "Roteiro de viagem — 16 a 27 de dezembro de 2026",
     base: "Voorburg",
     pessoas: 4,
-    atualizado: "2026-10-23"
+    atualizado: "2026-11-16"
   },
 
   voos: {
@@ -55,47 +57,24 @@ window.ITINERARIO = {
     },
 
     {
-      id: "d17", data: "2026-12-17", cidade: "Leiden · Leidschendam",
-      titulo: "Leiden e compras",
-      resumo: "Manhã livre para o fuso e almoço em casa. À tarde, Leiden ainda com luz do dia e seu mercado de Natal nostálgico; no fim do dia, compras no maior shopping do país, a 10 min de casa.",
-      tags: ["compras", "natal", "familia"],
-      imagens: ["Kort_Rapenburg_Leiden.jpg"],
-      deslocamento: "Voorburg → Leiden: ~20 min · Leiden → Mall: ~20 min · Mall → casa: ~10 min.",
-      programa: [
-        { hora: "manhã", titulo: "Acordar sem despertador", texto: "Café da manhã demorado em casa. Primeiro dia é para acertar o fuso." },
-        { hora: "12:00", titulo: "Almoço em casa", tags: ["familia"] },
-        { hora: "13:15", titulo: "Saída para Leiden", texto: "Saindo cedo dá para ver a cidade com luz do dia: o sol se põe por volta das 16h30." },
-        { hora: "13:45", titulo: "Passeio por Leiden", texto: "Rapenburg, o canal mais bonito da cidade, a universidade de 1575, a Burcht (fortaleza no alto do morro, com vista dos telhados) e as ruelas do centro histórico." },
-        { hora: "15:30", titulo: "Leiden: Nostalgische Kerstmarkt", texto: "Mercado de Natal na Hooglandse Kerkgracht, ao lado da Hooglandse Kerk. Em 2026 acontece de 11 a 13 e de 17 a 20 de dezembro. Horário de 2026 a confirmar (em 2025 ia das 12h às 17h; na sexta 11/12/2026 está anunciado até as 21h). Às 16h30 as luzes do centro se acendem.", tags: ["natal"], link: { rotulo: "Leiden International Centre", url: "https://www.leideninternationalcentre.nl/living-here/events/2783016429/nostalgic-leiden-christmas-market" } },
-        { hora: "17:15", titulo: "Westfield Mall of the Netherlands", texto: "Leidschendam, colado a Voorburg, no caminho de volta. Mais de 200 lojas, praça de alimentação e área de restaurantes, aberto até as 20h. Bom para casacos, luvas, botas e lembrancinhas.", tags: ["compras"], link: { rotulo: "Horários", url: "https://denhaag.com/nl/westfield-mall-of-the-netherlands" } },
-        { hora: "19:00", titulo: "Jantar no shopping e volta para casa" }
-      ],
-      comer: [
-        { nome: "Café De Vergulde Kruik", tipo: "bar tradicional holandês com vitrais do séc. XIX, bom para um café ou chocolate quente", onde: "Haarlemmerstraat 22, Leiden" },
-        { nome: "Barracas do mercado de Natal", tipo: "chocolate quente, glühwein e doces", onde: "Hooglandse Kerkgracht, Leiden" },
-        { nome: "Restaurantes do Mall", tipo: "jantar, várias cozinhas", onde: "Westfield Mall of the Netherlands" }
-      ],
-      dicas: [
-        "Aproveitar o mercado do shopping para comprar itens não perecíveis da ceia: dia 24 os mercados fecham cedo e ficam lotados.",
-        "Na quinta (17) é dia de 'koopavond' em muitas cidades: lojas de rua abertas até mais tarde."
-      ],
-      confirmar: ["Horário do mercado de Natal de Leiden no dia 17/12."]
-    },
-
-    {
-      id: "d18", data: "2026-12-18", cidade: "Haia (Den Haag)",
-      titulo: "Haia, a cidade da paz e da justiça",
-      resumo: "Tribunal Penal Internacional, Palácio da Paz com audioguia em português, um passeio pelo centro para compras e o Binnenhof, e à noite o Royal Christmas Fair.",
+      id: "d17", data: "2026-12-17", cidade: "Haia (Den Haag)",
+      titulo: "Haia: paz, justiça e compras",
+      resumo: "Primeiro dia, começando sem pressa para acertar o fuso: Tribunal Penal Internacional e Palácio da Paz com audioguia em português. À tarde, o dia de compras da viagem no centro de Haia (Primark, Søstrene Grene, Uniqlo e Dille & Kamille, todas a poucos minutos a pé umas das outras) e, à noite, o Royal Christmas Fair.",
       tags: ["pt", "natal", "compras"],
       imagens: ["Den_Haag_-_Vredespaleis_-_International_Court_of_Justice_-_Front_Gate.jpg"],
       deslocamento: "De carro ou tram a partir de Voorburg (~20 min). Para o centro, o tram é mais fácil que estacionar.",
       programa: [
-        { hora: "10:00", titulo: "Tribunal Penal Internacional (TPI/ICC)", texto: "As audiências costumam ser abertas ao público, sem inscrição prévia, para maiores de 16 anos. Levar documento com foto físico (passaporte). Antes de ir, olhar o calendário de audiências: em meados de dezembro pode haver recesso. Oude Waalsdorperweg 10.", link: { rotulo: "Visitar o TPI", url: "https://www.icc-cpi.int/visit" } },
-        { hora: "12:00", titulo: "Palácio da Paz — Centro de Visitantes", texto: "Sede da Corte Internacional de Justiça (ONU) e da Corte Permanente de Arbitragem. Entrada gratuita, exposição e filme de 30–45 min com audiotour em 10 idiomas, incluindo português. Inverno: quarta a domingo, 12h–16h. Do lado de fora, a Chama da Paz e as pedras doadas pelos países.", tags: ["pt"], link: { rotulo: "Horários", url: "https://denhaag.com/nl/het-vredespaleis-visitors-centre" } },
+        { hora: "manhã", titulo: "Acordar sem despertador", texto: "Café da manhã em casa com calma. Depois da chegada tarde da noite, o primeiro dia começa mais tarde." },
+        { hora: "10:45", titulo: "Tribunal Penal Internacional (TPI/ICC)", texto: "As audiências costumam ser abertas ao público, sem inscrição prévia, para maiores de 16 anos. Levar documento com foto físico (passaporte). Antes de ir, olhar o calendário de audiências: em meados de dezembro pode haver recesso. Oude Waalsdorperweg 10.", link: { rotulo: "Visitar o TPI", url: "https://www.icc-cpi.int/visit" } },
+        { hora: "12:15", titulo: "Palácio da Paz — Centro de Visitantes", texto: "Sede da Corte Internacional de Justiça (ONU) e da Corte Permanente de Arbitragem. Entrada gratuita, exposição e filme de 30–45 min com audiotour em 10 idiomas, incluindo português. Inverno: quarta a domingo, 12h–16h. Do lado de fora, a Chama da Paz e as pedras doadas pelos países.", tags: ["pt"], link: { rotulo: "Horários", url: "https://denhaag.com/nl/het-vredespaleis-visitors-centre" } },
         { hora: "13:30", titulo: "Almoço no centro", texto: "Região do Plein e do Hofkwartier." },
-        { hora: "14:30", titulo: "Centro de Haia: compras e Binnenhof", texto: "O Binnenhof, sede histórica do Parlamento à beira do lago Hofvijver, está em reforma: a torre-mirante ao lado da obra mostra o conjunto do alto. Depois, compras pela Haagse Passage (galeria coberta do século XIX), pelas ruas Noordeinde, Hoogstraat e Prinsestraat no Hofkwartier, e pela loja de departamentos De Bijenkorf.", tags: ["compras"] },
-        { hora: "16:30", titulo: "Royal Christmas Fair", texto: "Mercado de Natal no Lange Voorhout, de 3 a 23 de dezembro de 2026, todos os dias das 12h às 21h. Entrada livre: chalés, fogueiras, glühwein, coral.", tags: ["natal"], link: { rotulo: "Royal Christmas Fair", url: "https://denhaag.com/nl/agenda/royal-christmas-fair" } },
-        { hora: "19:00", titulo: "Jantar no centro e volta para casa" }
+        { hora: "14:30", titulo: "Binnenhof", texto: "A sede histórica do Parlamento, à beira do lago Hofvijver, está em reforma: a torre-mirante ao lado da obra mostra o conjunto do alto. Daqui começa o percurso de compras, todo a pé." },
+        { hora: "15:00", titulo: "Primark", texto: "Spui 50, na esquina com a Kalvermarkt. Loja grande de roupas e acessórios baratos: bom lugar para gorros, luvas, cachecóis e meias grossas para o resto da viagem.", tags: ["compras"] },
+        { hora: "15:45", titulo: "Søstrene Grene", texto: "Spuistraat 46-48, a 3 min a pé. Loja dinamarquesa de decoração, cozinha, papelaria e enfeites de Natal, com preços baixos. Boa para lembrancinhas.", tags: ["compras"] },
+        { hora: "16:15", titulo: "Uniqlo", texto: "Grote Marktstraat 30, a principal rua de compras do centro. Vale procurar a linha Heattech, de roupas térmicas finas para usar por baixo da roupa no frio.", tags: ["compras"] },
+        { hora: "17:00", titulo: "Haagse Passage e Dille & Kamille", texto: "Atravessar a Haagse Passage, galeria coberta do século XIX, até a Dille & Kamille, em Noordeinde 44: loja holandesa de casa, cozinha e enfeites de Natal de materiais naturais. Na quinta costuma fechar às 19h.", tags: ["compras"] },
+        { hora: "17:45", titulo: "Royal Christmas Fair", texto: "A 5 min a pé de Noordeinde. Mercado de Natal no Lange Voorhout, de 3 a 23 de dezembro de 2026, todos os dias das 12h às 21h. Entrada livre: chalés, fogueiras, glühwein, coral.", tags: ["natal"], link: { rotulo: "Royal Christmas Fair", url: "https://denhaag.com/nl/agenda/royal-christmas-fair" } },
+        { hora: "19:15", titulo: "Jantar no centro e volta para casa" }
       ],
       comer: [
         { nome: "Restaurantes da Prinsestraat e da Molenstraat", tipo: "almoço em ruas antigas, muitas opções", onde: "Hofkwartier, centro" },
@@ -105,13 +84,14 @@ window.ITINERARIO = {
       ],
       dicas: [
         "Para o Palácio por dentro (não só o centro de visitantes) existem visitas guiadas em alguns fins de semana, em inglês ou holandês, com ingresso só pelo site do Palácio (€16,50 em 2025/26). Vale olhar o site no início de dezembro.",
-        "Sexta-feira é dia movimentado no comércio do centro; as lojas costumam abrir até 18h ou mais."
+        "Quinta-feira é dia de 'koopavond' em Haia: muitas lojas do centro ficam abertas até mais tarde, então dá para voltar a alguma loja depois do mercado de Natal.",
+        "Se preferirem um shopping coberto em outro dia, o Westfield Mall of the Netherlands fica a 10 min de casa, em Leidschendam (seg 11–20h, ter–sáb 10–20h, dom 12–20h)."
       ],
-      confirmar: ["Calendário de audiências do TPI para 18/12."]
+      confirmar: ["Calendário de audiências do TPI para 17/12."]
     },
 
     {
-      id: "d19", data: "2026-12-19", cidade: "Amsterdã",
+      id: "d18", data: "2026-12-18", cidade: "Amsterdã",
       titulo: "Amsterdã: canais e museu",
       resumo: "Free tour com guia que fala português, a tarde no Museu Van Gogh (guia multimídia em português) ou no NEMO, e passeio de barco com audioguia em português ao anoitecer.",
       tags: ["pt", "reserva"],
@@ -132,9 +112,40 @@ window.ITINERARIO = {
         { nome: "Restaurantes da Leidseplein", tipo: "jantar perto do fim do passeio de barco, muitas opções", onde: "a 10 min a pé da Museumplein" }
       ],
       dicas: [
-        "Sábado é o dia mais cheio em Amsterdã. Se preferirem calma, trocar este dia com o domingo (20) e fazer Zaanse Schans no sábado.",
+        "Sexta-feira costuma ser menos cheia que o fim de semana em Amsterdã, mas os trens do fim da tarde vão lotados: o trem de volta às 20h já pega o movimento mais leve.",
         "O free tour pede no mínimo de participantes; se não fechar grupo em português, a Civitatis oferece alternativa."
       ]
+    },
+
+    {
+      id: "d19", data: "2026-12-19", cidade: "Leiden",
+      titulo: "Leiden: feira de sábado e passeio",
+      resumo: "Um dia sem pressa, para descansar depois de Haia e Amsterdã: almoço em casa, a feira de sábado ao longo do canal, um moinho no meio da cidade, ruas e canais antigos e o mercado de Natal nostálgico ao entardecer.",
+      tags: ["natal", "familia"],
+      imagens: ["Kort_Rapenburg_Leiden.jpg"],
+      deslocamento: "Voorburg → Leiden: ~20 min de carro. Estacionar na garagem subterrânea Lammermarkt, ao lado do moinho De Valk. Tudo depois é a pé, em distâncias curtas.",
+      programa: [
+        { hora: "manhã", titulo: "Acordar sem despertador", texto: "Café da manhã demorado em casa." },
+        { hora: "12:00", titulo: "Almoço em casa", tags: ["familia"] },
+        { hora: "13:00", titulo: "Molen De Valk", texto: "Moinho de 1743 no meio da cidade, hoje museu, a 2 min da garagem. Dá para subir até a varanda e ver os telhados de Leiden. Ter–dom 10h–17h (última entrada 16h30), adulto €6.", link: { rotulo: "Molen De Valk", url: "https://www.molenmuseumdevalk.nl/en/bezoekersinformatie" } },
+        { hora: "13:45", titulo: "Feira de sábado no Nieuwe Rijn", texto: "A feira de rua de Leiden, às quartas e sábados das 8h às 17h, montada ao longo do canal Nieuwe Rijn. Bancas de frutas, flores, queijos, peixe e produtos da região. Bom lugar para provar kibbeling (peixe frito), arenque e stroopwafel quente feito na hora.", link: { rotulo: "Feira de Leiden", url: "https://leideninternationalcentre.nl/living-here/events/70854787/market-in-leiden" } },
+        { hora: "15:00", titulo: "Burcht e Hooglandse Kerk", texto: "A Burcht é uma fortaleza circular no alto de um morro artificial, no centro. Subir a escada e dar a volta no muro para ver a cidade. Logo ao lado fica a Hooglandse Kerk, igreja gótica." },
+        { hora: "15:30", titulo: "Mercado de Natal nostálgico", texto: "Na Hooglandse Kerkgracht, ao lado da igreja. Em 2026 acontece de 11 a 13 e de 17 a 20 de dezembro. Horário de 2026 a confirmar (em 2025 ia das 12h às 17h).", tags: ["natal"], link: { rotulo: "Leiden International Centre", url: "https://www.leideninternationalcentre.nl/living-here/events/2783016429/nostalgic-leiden-christmas-market" } },
+        { hora: "16:15", titulo: "Rapenburg ao entardecer", texto: "Caminhar até o Rapenburg, o canal mais bonito da cidade, com casarões do século XVII, pontes e o prédio da universidade de 1575. O sol se põe por volta das 16h30, e as luzes de Natal das ruas se acendem." },
+        { hora: "17:30", titulo: "Jantar em Leiden e volta para casa" }
+      ],
+      comer: [
+        { nome: "Bancas da feira", tipo: "kibbeling, arenque, queijos e stroopwafel quente", onde: "Nieuwe Rijn" },
+        { nome: "Café De Vergulde Kruik", tipo: "bar tradicional holandês com vitrais do séc. XIX, bom para um café ou chocolate quente", onde: "Haarlemmerstraat 22" },
+        { nome: "Barracas do mercado de Natal", tipo: "chocolate quente, glühwein e doces", onde: "Hooglandse Kerkgracht" },
+        { nome: "Restaurantes do Nieuwe Rijn", tipo: "vários restaurantes e cafés à beira do canal para o jantar", onde: "centro de Leiden" }
+      ],
+      dicas: [
+        "Se preferirem comer na feira, sair de casa às 11h e almoçar nas bancas do Nieuwe Rijn.",
+        "Se o tempo estiver feio, o Hortus Botanicus, jardim botânico de 1590 com estufas aquecidas, fica no Rapenburg 73 (todos os dias 10h–17h, adulto €11,50).",
+        "Sábado é o dia mais cheio no centro de Leiden: andar sem pressa e fazer pausas em cafés."
+      ],
+      confirmar: ["Horário do mercado de Natal de Leiden no sábado 19/12."]
     },
 
     {
@@ -179,7 +190,7 @@ window.ITINERARIO = {
         { hora: "12:30", titulo: "Almoço em Utrecht" },
         { hora: "14:00", titulo: "Castelo De Haar", texto: "Aberto todos os dias; nas férias escolares (19/12/2026 a 3/1/2027) abre das 10h às 17h, última entrada às 16h15. Funciona com horário marcado: comprar online o horário das 14h30. São uns 20 min a pé do estacionamento até o castelo. Nos últimos anos o castelo ganhou decoração de Natal em dezembro (datas de 2026 a confirmar).", tags: ["reserva", "natal"], link: { rotulo: "Horários e ingressos", url: "https://www.kasteeldehaar.nl/plan-je-bezoek/praktische-informatie/praktische-informatieopeningstijden/" } },
         { hora: "16:15", titulo: "Jardins e café quente", texto: "Volta pelos jardins até o pôr do sol e uma pausa no Restaurant Laverie, que fica aberto até as 17h." },
-        { hora: "17:30", titulo: "De Lumineuze Nachten", texto: "Caminhada noturna de 2,2 km (60–90 min) pelo parque iluminado, com projeções no castelo e trilha sonora. De 4/12/2026 a 3/1/2027. Adulto €24,50. O estacionamento do evento é na Parkweg 5 (€12 comprado antes). No meio do caminho há um terraço de inverno com bebidas quentes e lanches.", tags: ["natal", "reserva"], link: { rotulo: "Informações e ingressos", url: "https://delumineuzenachten.nl/praktisch" } },
+        { hora: "17:30", titulo: "De Lumineuze Nachten", texto: "Ingressos já comprados. Caminhada noturna de 2,2 km (60–90 min) pelo parque iluminado, com projeções no castelo e trilha sonora. De 4/12/2026 a 3/1/2027. Adulto €24,50. O estacionamento do evento é na Parkweg 5 (€12 comprado antes). No meio do caminho há um terraço de inverno com bebidas quentes e lanches.", tags: ["natal", "reserva"], link: { rotulo: "Informações e ingressos", url: "https://delumineuzenachten.nl/praktisch" } },
         { hora: "19:15", titulo: "Volta para casa", texto: "Jantar em casa e arrumar as malas para a Bélgica." }
       ],
       comer: [
@@ -204,7 +215,7 @@ window.ITINERARIO = {
       deslocamento: "Voorburg → Bruges: ~2h30 de carro (passando por Antuérpia). Carro com placa holandesa já é registrado automaticamente nas zonas de baixa emissão de Flandres.",
       programa: [
         { hora: "08:30", titulo: "Saída de Voorburg" },
-        { hora: "11:00", titulo: "Chegada e malas no hotel", texto: "A cidade indica o estacionamento Centrum-Station, na entrada do centro histórico, para quem vem de carro.", tags: ["reserva"] },
+        { hora: "11:00", titulo: "Chegada e malas no hotel", texto: "Hotel já reservado. A cidade indica o estacionamento Centrum-Station, na entrada do centro histórico, para quem vem de carro.", tags: ["reserva"] },
         { hora: "12:00", titulo: "Almoço" },
         { hora: "13:30", titulo: "Tour panorâmico de minibus", texto: "50 minutos saindo da Markt, com comentários gravados em português. Bom jeito de ver a cidade toda sem cansar.", tags: ["pt"], link: { rotulo: "Civitatis (PT)", url: "https://www.civitatis.com/br/bruges/onibus-turistico-bruges/" } },
         { hora: "15:00", titulo: "A pé pelo centro", texto: "Burg, Rozenhoedkaai (o cartão-postal dos canais), Begijnhof e uma chocolataria. Passeio de barco pelos canais se estiver operando no inverno." },
@@ -216,7 +227,6 @@ window.ITINERARIO = {
         { nome: "Barracas do mercado de Natal", tipo: "waffles, batata frita belga, chocolate quente e glühwein", onde: "Markt e Simon Stevinplein" }
       ],
       dicas: [
-        "Reservar hotel dentro do centro histórico com estacionamento, ou perto da estação.",
         "Para um tour a pé guiado só em português, a Civitatis tem tour privado (preço por grupo)."
       ]
     },
@@ -339,25 +349,25 @@ window.ITINERARIO = {
   ],
 
   reservas: [
-    { id: "r1", item: "Ingressos com horário do Castelo De Haar (21/12, 10h)", quando: "Assim que abrirem as vendas de dezembro", url: "https://onlineticket.kasteeldehaar.nl/", dia: "d21" },
-    { id: "r2", item: "De Lumineuze Nachten + estacionamento (21/12, ~17h30)", quando: "Novembro (horários da noite esgotam)", url: "https://delumineuzenachten.nl/praktisch", dia: "d21" },
-    { id: "r3", item: "Hotel em Bruges com estacionamento (22/12, 1 noite)", quando: "Já — semana de Natal", url: "https://www.visitbruges.be/en/winter-glow", dia: "d22" },
-    { id: "r4", item: "Free tour em português em Amsterdã (19/12)", quando: "Novembro", url: "https://www.civitatis.com/br/amsterdam/free-tour-amsterdam/", dia: "d19" },
-    { id: "r12", item: "Museu Van Gogh com guia multimídia em português (19/12, 14h30)", quando: "Já — vendas abrem 60 dias antes", url: "https://www.vangoghmuseum.nl/", dia: "d19" },
-    { id: "r5", item: "Barco com audioguia em português em Amsterdã (19/12, ~16h45)", quando: "Início de dezembro", url: "https://www.lovers.nl/", dia: "d19" },
+    { id: "r1", item: "Ingressos com horário do Castelo De Haar (21/12, 14h30)", quando: "Assim que abrirem as vendas de dezembro", url: "https://onlineticket.kasteeldehaar.nl/", dia: "d21" },
+    { id: "r2", item: "De Lumineuze Nachten + estacionamento (21/12, ~17h30)", feito: true, quando: "Novembro (horários da noite esgotam)", url: "https://delumineuzenachten.nl/praktisch", dia: "d21" },
+    { id: "r3", item: "Hotel em Bruges com estacionamento (22/12, 1 noite)", feito: true, quando: "Já — semana de Natal", url: "https://www.visitbruges.be/en/winter-glow", dia: "d22" },
+    { id: "r4", item: "Free tour em português em Amsterdã (18/12)", quando: "Novembro", url: "https://www.civitatis.com/br/amsterdam/free-tour-amsterdam/", dia: "d18" },
+    { id: "r12", item: "Museu Van Gogh com guia multimídia em português (18/12, 14h30)", quando: "Já — vendas abrem 60 dias antes", url: "https://www.vangoghmuseum.nl/", dia: "d18" },
+    { id: "r5", item: "Barco com audioguia em português em Amsterdã (18/12, ~16h45)", quando: "Início de dezembro", url: "https://www.lovers.nl/", dia: "d18" },
     { id: "r7", item: "Tour de minibus com áudio em português em Bruges (22/12)", quando: "Dezembro", url: "https://www.civitatis.com/br/bruges/onibus-turistico-bruges/", dia: "d22" },
     { id: "r13", item: "Jantar em Eindhoven na volta de Bruxelas (23/12, ~17h30)", quando: "Início de dezembro", url: "", dia: "d23" },
     { id: "r8", item: "Restaurante do jantar de despedida (26/12)", quando: "Início de dezembro", url: "", dia: "d26" },
     { id: "r9", item: "Hotel perto do aeroporto de Lisboa (27/12, 1 noite)", quando: "Novembro", url: "", dia: "d27" },
     { id: "r10", item: "Conferir o carro no simulador da LEZ de Bruxelas", quando: "Antes de 23/12", url: "https://lez.brussels/mytax/en/registration", dia: "d23" },
-    { id: "r11", item: "Ver calendário de audiências do TPI para 18/12", quando: "Semana anterior", url: "https://www.icc-cpi.int/visit", dia: "d18" }
+    { id: "r11", item: "Ver calendário de audiências do TPI para 17/12", quando: "Semana anterior", url: "https://www.icc-cpi.int/visit", dia: "d17" }
   ],
 
   emPortugues: [
-    { titulo: "Audiotour do Palácio da Paz", texto: "Gratuito, em português, no centro de visitantes.", dia: "d18" },
-    { titulo: "Free tour Amsterdam (Civitatis)", texto: "Guia que fala português, ~2h.", dia: "d19", url: "https://www.civitatis.com/br/amsterdam/free-tour-amsterdam/" },
-    { titulo: "Museu Van Gogh", texto: "Guia multimídia em português, escolhido na compra do ingresso.", dia: "d19", url: "https://www.vangoghmuseum.nl/" },
-    { titulo: "Barco nos canais com audioguia", texto: "LOVERS: audioguia GPS em português.", dia: "d19", url: "https://www.lovers.nl/" },
+    { titulo: "Audiotour do Palácio da Paz", texto: "Gratuito, em português, no centro de visitantes.", dia: "d17" },
+    { titulo: "Free tour Amsterdam (Civitatis)", texto: "Guia que fala português, ~2h.", dia: "d18", url: "https://www.civitatis.com/br/amsterdam/free-tour-amsterdam/" },
+    { titulo: "Museu Van Gogh", texto: "Guia multimídia em português, escolhido na compra do ingresso.", dia: "d18", url: "https://www.vangoghmuseum.nl/" },
+    { titulo: "Barco nos canais com audioguia", texto: "LOVERS: audioguia GPS em português.", dia: "d18", url: "https://www.lovers.nl/" },
     { titulo: "Minibus panorâmico de Bruges", texto: "Comentários gravados em português, 50 min.", dia: "d22", url: "https://www.civitatis.com/br/bruges/onibus-turistico-bruges/" },
     { titulo: "Para ler antes, em português", texto: "Wikipédia: Palácio da Paz, Tribunal Penal Internacional, Castelo De Haar, Bruges, Grand-Place, Peyo.", url: "https://pt.wikipedia.org/w/index.php?search=Pal%C3%A1cio+da+Paz" }
   ],
@@ -373,7 +383,7 @@ window.ITINERARIO = {
 
   extras: [
     { titulo: "Delft", texto: "A 15 min de casa. Cabe na manhã do dia 24." },
-    { titulo: "Mauritshuis", texto: "A 'Moça com Brinco de Pérola', ao lado do Binnenhof. Cabe no dia 18 se o TPI não tiver audiência." },
+    { titulo: "Mauritshuis", texto: "A 'Moça com Brinco de Pérola', ao lado do Binnenhof. Cabe no dia 17 se o TPI não tiver audiência." },
     { titulo: "Kinderdijk", texto: "Os 19 moinhos patrimônio da UNESCO, a ~45 min. Alternativa para o dia 26." }
   ],
 
@@ -390,6 +400,13 @@ window.ITINERARIO = {
     { rotulo: "Zaanse Schans no inverno (DagjeWeg)", url: "https://www.dagjeweg.nl/nieuwsredactie/25253/In-de-winter-naar-de-Zaanse-Schans%3F-Dit-is-waarom%21" },
     { rotulo: "Restaurantes em Eindhoven (Bart's Boekje)", url: "https://www.bartsboekje.com/en/restaurants-eindhoven/" },
     { rotulo: "24 horas em Haia (denhaag.com)", url: "https://denhaag.com/en/tips-for-you/24-hours-the-hague" },
+    { rotulo: "Primark Den Haag", url: "https://denhaag.com/nl/primark-den-haag" },
+    { rotulo: "Uniqlo Den Haag", url: "https://denhaag.com/nl/uniqlo" },
+    { rotulo: "Søstrene Grene Den Haag", url: "https://sostrenegrene.com/nl/winkel/spuistraat-den-haag-s-3003" },
+    { rotulo: "Dille & Kamille Den Haag", url: "https://www.openingstijden.nl/Dille-en-Kamille/Den-Haag/Plaats-16/" },
+    { rotulo: "Feira de Leiden (quartas e sábados)", url: "https://leideninternationalcentre.nl/living-here/events/70854787/market-in-leiden" },
+    { rotulo: "Molen De Valk", url: "https://www.molenmuseumdevalk.nl/en/bezoekersinformatie" },
+    { rotulo: "Hortus Botanicus Leiden", url: "https://www.noordwijk.info/en/discover-noordwijk/location-overview/4124585914/hortus-botanicus-leiden" },
     { rotulo: "Mercado de Natal de Leiden 2026", url: "https://www.leideninternationalcentre.nl/living-here/events/2783016429/nostalgic-leiden-christmas-market" },
     { rotulo: "Zaanse Schans — entrada adiada para 2027", url: "https://www.rodi.nl/zaanstad/gemeentenieuws/480185/gemeente-zaanstad-stelt-entreeticket-zaanse-schans-jaar-uit" },
     { rotulo: "Comics Art Museum — Peyo", url: "https://www.nomadotravel.app/en/attractions/belgian-comic-strip-center" },
